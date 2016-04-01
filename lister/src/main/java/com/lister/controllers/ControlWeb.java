@@ -9,10 +9,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class ControlWeb {
 
 	
+	// http://bootsnipp.com/snippets/featured/login-form-panel
+	
 	@RequestMapping(value = "/Home", method = RequestMethod.GET)
 	   public ModelAndView addContact() {
 			  
-		ModelAndView model = new ModelAndView("home");
+		ModelAndView model = new ModelAndView("login");
+		
 			  
 		return model;
 		
