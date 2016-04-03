@@ -1,28 +1,46 @@
 <jsp:include page="/WEB-INF/jsp/commonHeader.jsp"></jsp:include>
+<link href="/lister/resources/css/login.css" rel="stylesheet" media="screen">
+<script type="text/javascript" src="/lister/resources/js/login.js"> </script>
 
-<div class="container-login" >
-<div class="tab-content tabs-login col-lg-12 col-md-12 col-sm-12 cols-xs-12" style="height: 323px;">
-				<div class="tab-pane fade active in" id="login-access">
-					<h2><i class="glyphicon glyphicon-log-in"></i> Acceso</h2>						
-					<form class="form-horizontal" role="form" autocomplete="off" accept-charset="utf-8" method="post">
-						<div class="form-group ">
-							<label class="sr-only" for="login">Email</label>
-								<input type="text" value="" tabindex="1" placeholder="Usuario" id="login_value" name="login" class="form-control">
-						</div>
-						<div class="form-group ">
-							<label class="sr-only" for="password">Password</label>
-								<input type="password" tabindex="2" value="" placeholder="Contraseña" id="password" name="password" class="form-control">
-						</div>
-						
-						
-						<div class="form-group ">				
-								<button class="btn btn-lg btn-primary" tabindex="5" id="submit" name="log-me-in" type="submit">Ingresar</button>
-						</div>
-					</form>			
-				</div>
-			</div>
-			
+<div class="mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3" id="loginbox"> 
+        
+        <div class="row">                
+            <div class="iconmelon">
+             	<img src="resources/images/doc.png" width="190" height="190"></img>
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            
+            <div class="panel-heading">
+                <div class="panel-title text-center">&nbsp;</div>
+            </div>     
+
+            <div class="panel-body">
+
+                <form method="POST"  class="form-horizontal" id="formLogin">
+                   
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input type="text" placeholder="Usuario" name="parUser" class="form-control" id="parUser">                                        
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input type="password" placeholder="Contrase&ntilde;a" name="parPassword" class="form-control" id="parPassword">
+                    </div>                                                                  
+
+                    <div class="form-group">
+                        <!-- Button -->
+                        <div class="col-sm-12 controls">
+                            <button class="btn btn-primary pull-right" type="submit"><i class="glyphicon glyphicon-log-in"></i> Entrar</button>                          
+                        </div>
+                    </div>
+
+                </form>     
+
+           </div>                     
+        
+       </div>  
 </div>			
-
-
 <jsp:include page="/WEB-INF/jsp/commonFooter.jsp"></jsp:include>
