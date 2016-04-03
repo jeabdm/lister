@@ -28,6 +28,11 @@
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                         <input type="password" placeholder="Contrase&ntilde;a" name="parPassword" class="form-control" id="parPassword">
+                        
+                    </div>
+                    
+                    <div class="input-group">
+                                <span><input type="checkbox" id="rememberme" name="remember-me"> Recordarme </span>
                     </div>                                                                  
 
                     <div class="form-group">

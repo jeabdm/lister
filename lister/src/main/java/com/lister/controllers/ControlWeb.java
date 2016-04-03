@@ -17,7 +17,7 @@ public class ControlWeb {
 	
 	// http://websystique.com/spring-security/spring-security-4-remember-me-example-with-hibernate/
 	
-	@RequestMapping(value = "/Home", method = RequestMethod.GET)
+	@RequestMapping(value = "/Home", method = {RequestMethod.POST, RequestMethod.GET})
 	   public ModelAndView addContact() {
 			  
 		ModelAndView model = new ModelAndView("login");
