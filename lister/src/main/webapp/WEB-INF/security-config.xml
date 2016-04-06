@@ -26,7 +26,7 @@
   </http>  
   
  <authentication-manager>  
-  <authentication-provider user-service-ref="loginService" />  
+  <authentication-provider user-service-ref="userService" />  
  </authentication-manager>
  
 </beans:beans>

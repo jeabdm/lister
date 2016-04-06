@@ -1,45 +1,69 @@
 package com.lister.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="users")
 public class User {
 
-	private String password;
+	@Id
+	@GeneratedValue
+	@Column(name = "id")
+	private long id;
+	@Column(name = "username")
 	private String username;
-	private String role;
+	@Column(name = "password")
+	private String password;
+	@Column(name = "ennabled")
+	private String enabled;
+	
 	
 	public User() {
 		super();
 	}
 
-	public User(String password, String username, String role) {
-		super();
-		this.password = password;
-		this.username = username;
-		this.role = role;
+
+	public long getId() {
+		return id;
 	}
 
-	public String getPassword() {
-		return password;
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
 
 	public String getUsername() {
 		return username;
 	}
 
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
-	public String getRole() {
-		return role;
+
+	public String getPassword() {
+		return password;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	public String getEnabled() {
+		return enabled;
+	}
+
+
+	public void setEnabled(String enabled) {
+		this.enabled = enabled;
 	}
 	
 }
