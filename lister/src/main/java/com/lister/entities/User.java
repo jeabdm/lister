@@ -1,5 +1,6 @@
 package com.lister.entities;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,17 +9,21 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="users")
-public class User {
+public class User implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
-	@Column(name = "id")
+	@Column(name = "u_id")
 	private long id;
-	@Column(name = "username")
+	@Column(name = "u_name")
 	private String username;
-	@Column(name = "password")
+	@Column(name = "u_password")
 	private String password;
-	@Column(name = "ennabled")
+	@Column(name = "u_ennabled")
 	private String enabled;
 	
 	
