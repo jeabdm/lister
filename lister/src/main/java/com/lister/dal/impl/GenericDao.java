@@ -2,7 +2,6 @@ package com.lister.dal.impl;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
-import java.sql.SQLException;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -12,14 +11,14 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.lister.dal.interfaces.IGenericDao;
 
-public  abstract class DaoBase <T extends Serializable , ID extends Serializable> implements IGenericDao<T, ID>{
+public class GenericDao <T extends Serializable , ID extends Serializable> implements IGenericDao<T, ID>{
 
 	@Autowired
 	protected SessionFactory sessionFactory;
 	private Class<T> persistentClass;
 
 	@SuppressWarnings("unchecked")
-	public DaoBase(){
+	public GenericDao(){
 		this.persistentClass = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 	}
 	
@@ -33,7 +32,7 @@ public  abstract class DaoBase <T extends Serializable , ID extends Serializable
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public ID insert(T e) throws SQLException {
+	public ID insert(T e){
 		Session s = null;
 		Transaction tx = null;
 		ID id = null;
@@ -44,7 +43,7 @@ public  abstract class DaoBase <T extends Serializable , ID extends Serializable
 			tx.commit();
 		} catch (HibernateException ex) {
 			tx.rollback();
-			throw new SQLException(ex.getMessage());
+			// TODO: handle exception
 		}finally{
 			this.closeSession(s);
 		}
@@ -52,7 +51,7 @@ public  abstract class DaoBase <T extends Serializable , ID extends Serializable
 	}
 
 	@Override
-	public void update(T e) throws SQLException{
+	public void update(T e){
 		Session s = null;
 		Transaction tx = null;
 		try {
@@ -62,14 +61,14 @@ public  abstract class DaoBase <T extends Serializable , ID extends Serializable
 			tx.commit();
 		} catch (HibernateException ex) {
 			tx.rollback();
-			throw new SQLException(ex.getMessage());
+			// TODO: handle exception
 		}finally{
 			this.closeSession(s);
 		}
 	}
 
 	@Override
-	public void delete(T e) throws SQLException {
+	public void delete(T e){
 		Session s = null;
 		Transaction tx = null;
 		try {
@@ -79,7 +78,7 @@ public  abstract class DaoBase <T extends Serializable , ID extends Serializable
 			tx.commit();
 		} catch (HibernateException ex) {
 			tx.rollback();
-			throw new SQLException(ex.getMessage());
+			// TODO: handle exception
 		}finally{
 			this.closeSession(s);
 		}
@@ -87,14 +86,14 @@ public  abstract class DaoBase <T extends Serializable , ID extends Serializable
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public T get(ID id) throws SQLException {
+	public T get(ID id){
 		T entity = null;
 		Session s = null;
 		try {
 			s = this.sessionFactory.openSession();
 			entity = (T)s.get(this.persistentClass.getName(), id);
 		} catch (HibernateException ex) {
-			throw new SQLException(ex.getMessage());
+			// TODO: handle exception
 		}finally{
 			this.closeSession(s);
 		}
@@ -103,7 +102,7 @@ public  abstract class DaoBase <T extends Serializable , ID extends Serializable
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<T> get() throws SQLException {
+	public List<T> get(){
 		Session s = null;
 		List<T> list = null;
 		try {
@@ -111,7 +110,7 @@ public  abstract class DaoBase <T extends Serializable , ID extends Serializable
 			Query q = s.createQuery("FROM " +this.getPersistentClass().getName());
 			list = (List<T>)q.list();
 		} catch (HibernateException ex) {
-			throw new SQLException(ex.getMessage());
+			// TODO: handle exception
 		}finally{
 			this.closeSession(s);
 		}
