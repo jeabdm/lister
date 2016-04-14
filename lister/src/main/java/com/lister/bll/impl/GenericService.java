@@ -1,4 +1,4 @@
-package com.lister.bll;
+package com.lister.bll.impl;
 
 import java.io.Serializable;
 import java.util.List;

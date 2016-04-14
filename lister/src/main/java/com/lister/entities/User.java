@@ -1,11 +1,18 @@
 package com.lister.entities;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name="users")
@@ -25,6 +32,12 @@ public class User implements Serializable{
 	private String password;
 	@Column(name = "u_ennabled")
 	private String enabled;
+	@ManyToMany(fetch = FetchType.LAZY, 
+				cascade = CascadeType.ALL)
+	@JoinTable(name="roles_users",
+				joinColumns = @JoinColumn(name="fk_user"),
+				inverseJoinColumns = @JoinColumn(name="fk_rol"))
+	private List<Rol> roles;
 	
 	
 	public User() {
@@ -35,7 +48,6 @@ public class User implements Serializable{
 	public long getId() {
 		return id;
 	}
-
 
 	public void setId(long id) {
 		this.id = id;
@@ -70,5 +82,15 @@ public class User implements Serializable{
 	public void setEnabled(String enabled) {
 		this.enabled = enabled;
 	}
-	
+
+
+	public List<Rol> getRoles() {
+		return roles;
+	}
+
+
+	public void setRoles(List<Rol> roles) {
+		this.roles = roles;
+	}
+
 }

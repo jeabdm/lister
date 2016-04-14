@@ -121,7 +121,7 @@ public class GenericDao <T extends Serializable , ID extends Serializable> imple
 		return persistentClass;
 	}
 	
-	private void closeSession(Session s){
+	protected void closeSession(Session s){
 		if(s != null){
 			s.close();
 		}
