@@ -21,8 +21,6 @@ public class ControlWeb {
 	   public ModelAndView addContact() {
 			  
 		ModelAndView model = new ModelAndView("login");
-		
-		
 			  
 		return model;
 		

@@ -1,7 +1,6 @@
 package com.lister.conf;
 
 import org.springframework.context.annotation.*;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -29,7 +28,6 @@ public class SpringConfig  extends WebMvcConfigurerAdapter {
     private static final String PROPERTY_NAME_DATABASE_PASSWORD = "db.password";
     private static final String PROPERTY_NAME_DATABASE_URL = "db.url";
     private static final String PROPERTY_NAME_DATABASE_USERNAME = "db.username";
-
     private static final String PROPERTY_NAME_HIBERNATE_DIALECT = "hibernate.dialect";
     private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
     private static final String PROPERTY_NAME_ENTITYMANAGER_PACKAGES_TO_SCAN = "entitymanager.packages.to.scan";
@@ -85,13 +83,5 @@ public class SpringConfig  extends WebMvcConfigurerAdapter {
         internalResourceViewResolver.setOrder(0);
         return internalResourceViewResolver;
     }
-
-    @Bean(name = "messageSource")
-    public ReloadableResourceBundleMessageSource reloadableResourceBundleMessageSource(){
-        ReloadableResourceBundleMessageSource reloadableResourceBundleMessageSource = new ReloadableResourceBundleMessageSource();
-        reloadableResourceBundleMessageSource.setBasename("/WEB-INF/messages");
-        return reloadableResourceBundleMessageSource;
-    }
-
 
 }
